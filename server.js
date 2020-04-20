@@ -4,7 +4,7 @@ const path = require('path');
 const app = express();
 
 // Serve static files....
-app.use(express.static(__dirname + '/twilio-hack-coronavirus/dist/twilio-hack-coronavirus'));
+app.use(express.static(__dirname + '/dist/twilio-hack-coronavirus'));
 
 // Send all requests to index.html
 app.get('/*', function(req, res) {
