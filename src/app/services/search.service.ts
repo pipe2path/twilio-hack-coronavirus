@@ -4,6 +4,7 @@ import { Item } from '../models/itemModel';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { environment } from '../../environments/environment';
+import {catchError} from 'rxjs/operators';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -17,11 +18,23 @@ export class SearchService {
   constructor(private http: HttpClient) {
   }
 
-  getItemsUrl = environment.apiUrl + '/items';
+  itemsUrl = environment.apiUrl + '/items';
 
   getRequestedItems() {
-    const items = this.http.get(this.getItemsUrl);
+    const items = this.http.get(this.itemsUrl).pipe(catchError(this.handleError));
     return items;
+  }
+
+  saveItemsNeeded(response): Observable<any> {
+    // const bodyObj = new Object();
+    // bodyObj.name = name;
+    // bodyObj.phone = phone;
+    // bodyObj.items  = JSON.stringify(items);
+    // const body = JSON.stringify(bodyObj);
+    const body = JSON.stringify(response);
+
+    return this.http.post(this.itemsUrl, body, httpOptions)
+            .pipe(catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse) {

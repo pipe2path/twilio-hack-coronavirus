@@ -63,4 +63,9 @@ export class SearchComponent implements OnInit {
       this.items.push({Name: this.newName, Brand: this.newBrand});
     }
   }
+
+  onSubmit(){
+    var response = {"items": this.itemsNeeded, "name": this.name, "phone": this.phone}
+    this.searchService.saveItemsNeeded(response).subscribe();
+  }
 }
