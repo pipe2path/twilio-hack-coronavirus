@@ -7,7 +7,7 @@
 </html>
 
 <div class="container-fluid">
-  <h4>Items needed</h4>
+  <h5>Please select an item</h5>
   <div *ngFor="let item of items; let i = index;">
     <ul class="list-group list-group-flush">
       <li class="list-group-item" (change)="onChange(item, $event)">
@@ -16,23 +16,25 @@
           <label class="custom-control-label" for="check{{i}}">{{item.Name}}</label>
           <label class="invisible">{{item.ItemId}}</label>
         </div>
-        <hr>
+        <hr/>
       </li>
     </ul>
   </div>
 
   <div>
+      <h5>Add an item if you don't see one in the above list</h5>
       <div class="form-group">
-        <h5>Add an item if you don't see one in the above list</h5>
         <input class="form-control" id="newName" name="newName" placeholder="Item Name" [(ngModel)]="newName">
-        <input class="form-control" id="newBrand" name="newBrand" placeholder="Item Brand" [(ngModel)]="newBrand">
-        <a style="font-size:24px" (click)="addNewItem()"><i class="fa fa-plus-square" style="font-size:24px;color:green"></i></a>
       </div>
+      <div class="form-group">
+        <input class="form-control" id="newBrand" name="newBrand" placeholder="Item Brand" [(ngModel)]="newBrand">
+      </div>
+      <a style="font-size:24px" (click)="addNewItem()"><i class="fa fa-plus-square" style="font-size:24px;color:green"></i></a>
   </div>
 
   <br/>
   <div>
-    <h4>Your information</h4>
+    <h5>Your information</h5>
     <form>
       <div class="form-group">
         <input class="form-control" id="name" name="name" placeholder="Name" [(ngModel)]="name" #name1="ngModel">
