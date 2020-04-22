@@ -4,7 +4,7 @@ export class Item {
   brand: string;
   description: string;
 
-  constructor(itemId, name, brand, description){
+  constructor(itemId, name, brand, description) {
     this.itemId = itemId;
     this.name = name;
     this.brand = brand;
