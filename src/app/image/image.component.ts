@@ -65,7 +65,6 @@ export class ImageComponent implements OnInit {
       //   this.thumbnailer(canvas, img, 188, 3);
       //   media.appendChild(canvas);
       // })
-
       img.src = reader.result;
     };
     reader.readAsDataURL(this.imageFile);
@@ -78,6 +77,7 @@ export class ImageComponent implements OnInit {
     const response = {'itemId' : itemid, 'name': submittedBy, 'image': image};
 
     this.foundService.saveImageForItem(response).subscribe();
+    this.ngOnInit();
   }
 
   // returns a function that calculates lanczos weight

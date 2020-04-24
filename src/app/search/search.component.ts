@@ -67,5 +67,6 @@ export class SearchComponent implements OnInit {
   onSubmit(){
     var response = {"items": this.itemsNeeded, "name": this.name, "phone": this.phone}
     this.searchService.saveItemsNeeded(response).subscribe();
+    this.ngOnInit();
   }
 }
