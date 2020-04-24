@@ -59,7 +59,7 @@ export class ImageComponent implements OnInit {
     reader.onload = function(event){
       var img = new Image();
       img.onload = function() {
-        context.drawImage(img, 0, 0, width, height);
+        context.drawImage(img, 0, 0, height, width);
         //this.thumbnailer(canvas, img, 188, 3);
         media.appendChild(canvas);
       };
