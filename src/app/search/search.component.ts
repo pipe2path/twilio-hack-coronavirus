@@ -59,8 +59,8 @@ export class SearchComponent implements OnInit {
 
   addNewItem() {
     // tslint:disable-next-line:triple-equals
-    if (this.newName != '' && this.newBrand != '') {
-      this.items.push({Name: this.newName, Brand: this.newBrand});
+    if (this.newName != '') {
+      this.items.push({name: this.newName, Brand: this.newBrand});
     }
   }
 
