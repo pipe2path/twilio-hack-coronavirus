@@ -31,6 +31,8 @@ export class ImageComponent implements OnInit {
   ngOnInit() {
     this.getRequestedItems();
     this.canvas.nativeElement.remove();
+    this.selectedItem = null;
+    this.name = '';
   }
 
   getRequestedItems(): void {
