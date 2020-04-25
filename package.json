@@ -31,7 +31,9 @@
     "@angular/router": "^5.2.0",
     "bootstrap": "^4.4.1",
     "core-js": "^2.4.1",
+    "ngx-image-compress": "^8.0.4",
     "node": "^12.13.0",
+    "resize-image": "^0.1.0",
     "rxjs": "^5.5.6",
     "zone.js": "^0.8.19"
   },

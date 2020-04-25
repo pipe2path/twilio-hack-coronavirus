@@ -5,6 +5,6 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:3050'
-  //apiUrl: 'https://menezes-service.herokuapp.com'
+  //apiUrl: 'http://localhost:3050'
+  apiUrl: 'https://menezes-service.herokuapp.com'
 };
