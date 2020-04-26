@@ -18,28 +18,45 @@
 </style>
 <body>
 <div class="container-fluid">
-  <h5>Please select an item</h5>
+<!--  <h5>Please select an item</h5>-->
   <form>
-    <div *ngFor="let item of items; let i = index;">
-      <div class="list-group">
-        <button type="button" class="list-group-item list-group-item-action" [ngClass]="{'active': selectedItem == item}"
-                (click)="onClick(item, $event)">{{item.name}}</button>
+    <div class="card">
+      <div class="card-header">
+        ITEMS REQUESTED. PLEASE SELECT ONE.
+      </div>
+      <div class="card-body">
+        <div *ngFor="let item of items; let i = index;">
+          <div class="list-group">
+            <button type="button" class="list-group-item list-group-item-action" [ngClass]="{'active': selectedItem == item}"
+              (click)="onClick(item, $event)">{{item.name}}</button>
+          </div>
+        </div>
       </div>
     </div>
     <br/>
-    <div #media id="app">
-      <div><img #img1 id="img1" width="100%"></div>
-      <div><canvas #canvas id="canvas" class="vid" width="100%" height="100%"></canvas></div>
-      <input id="file" type="file" accept="image/*" (change)="onFileSelected($event)">
+    <div class="card">
+      <div class="card-header">
+        TAKE A PICTURE
+      </div>
+      <div class="card-body">
+        <div #media id="app">
+          <div><img #img id="img1" width="100%"></div>
+  <!--      <div><canvas #canvas id="canvas" class="vid" width="100%" height="100%"></canvas></div>-->
+          <input id="file" type="file" accept="image/*" (change)="onFileSelected($event)">
+        </div>
+      </div>
     </div>
     <br/>
-<!--    <div>-->
-<!--      <button id="snap" class="btn btn-outline-primary btn-lg" (click)="capture()">Snap Photo</button>-->
-<!--      <button id="refresh" class="btn btn-outline-primary btn-lg" (click)="refresh()">Refresh</button>-->
-<!--    </div>-->
     <br/>
-    <div class="form-group">
-      <input class="form-control" id="name" name="name" placeholder="Name (optional)" [(ngModel)]="name" #name1="ngModel">
+    <div class="card">
+      <div class="card-header">
+        YOUR INFORMATION
+      </div>
+      <div class="card-body">
+        <div class="form-group">
+          <input class="form-control" id="name" name="name" placeholder="Name (optional)" [(ngModel)]="name" #name1="ngModel">
+        </div>
+      </div>
     </div>
   </form>
 </div>

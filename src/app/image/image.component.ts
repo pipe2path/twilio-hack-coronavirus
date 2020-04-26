@@ -13,13 +13,8 @@ import { NgxImageCompressService } from 'ngx-image-compress';
 })
 
 export class ImageComponent implements OnInit {
-  @ViewChild('canvas')
-  public canvas: ElementRef;
 
-  @ViewChild('media')
-  public media: ElementRef;
-
-  @ViewChild('img1')
+  @ViewChild('img')
   public imageEl: ElementRef;
 
   public items;
@@ -34,7 +29,6 @@ export class ImageComponent implements OnInit {
 
   ngOnInit() {
     this.getRequestedItems();
-    this.canvas.nativeElement.remove();
     this.selectedItem = null;
     this.name = '';
   }
@@ -61,39 +55,14 @@ export class ImageComponent implements OnInit {
     this.ngOnInit();
   }
 
-  compressFile(image) {
-    var sizeOfOriginalImage:number;
-    var sizeOFCompressedImage:number;
-    var imgResultBeforeCompress:string;
-    var imgResultAfterCompress:string;
-    var localCompressedURl:any;
-    const orientation = -1;
-    sizeOfOriginalImage = this.imageCompress.byteCount(image)/(1024*1024);
-    console.warn('Size in bytes is now:',  sizeOfOriginalImage);
-    this.imageCompress.compressFile(image, orientation, 25, 50).then(
-      result => {
-        imgResultAfterCompress = result;
-        localCompressedURl = result;
-        sizeOFCompressedImage = this.imageCompress.byteCount(result) / (1024 * 1024);
-        this.imageEl.nativeElement.src = result;
-      }
-    );
-  }
-
   onFileSelected(event) {
     console.log(event);
     const that = this;
     this.imageFile = event.target.files[0];
-    const context = this.canvas.nativeElement.getContext('2d');
-    const canvas = this.canvas.nativeElement;
-    const media = this.media.nativeElement;
     const imageEl = this.imageEl.nativeElement;
     const reader = new FileReader();
-    const width = this.canvas.nativeElement.width;
-    const height = this.canvas.nativeElement.height;
     reader.onload = function(event){
       var img = new Image();
-      img.crossOrigin = "Anonymous";
       img.onload = function() {
         imageEl.src = img.src;
         that.compressFile(imageEl.src);
@@ -104,8 +73,21 @@ export class ImageComponent implements OnInit {
     reader.readAsDataURL(this.imageFile);
   }
 
-
-
+  // compresses the image to 25% so it can be uploaded
+  compressFile(image) {
+    var sizeOFCompressedImage:number;
+    var imgResultAfterCompress:string;
+    var localCompressedURl:any;
+    const orientation = -1;
+    this.imageCompress.compressFile(image, orientation, 25, 50).then(
+      result => {
+        imgResultAfterCompress = result;
+        localCompressedURl = result;
+        sizeOFCompressedImage = this.imageCompress.byteCount(result) / (1024 * 1024);
+        this.imageEl.nativeElement.src = result;
+      }
+    );
+  }
 }
 
 
