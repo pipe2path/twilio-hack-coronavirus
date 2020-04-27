@@ -19,14 +19,14 @@
 <body>
 
 <div>
-  <a href="/"><img src="../../assets/home.png" width="25" height="25"></a>
+  <a href="/"><img style="margin-left:10px" src="../../assets/home.png" width="35" height="35"></a>
 </div>
 <div class="container-fluid">
 <!--  <h5>Please select an item</h5>-->
   <form>
     <div class="card">
       <div class="card-header">
-        ITEMS REQUESTED. SELECT ONE
+        <h4>ITEMS REQUESTED. SELECT ONE</h4>
       </div>
       <div class="card-body">
         <div *ngFor="let item of items; let i = index;">
@@ -40,7 +40,7 @@
     <br/>
     <div class="card">
       <div class="card-header">
-        TAKE A PICTURE
+        <h4>TAKE A PICTURE</h4>
       </div>
       <div class="card-body">
         <div #media id="app">
@@ -54,7 +54,7 @@
     <br/>
     <div class="card">
       <div class="card-header">
-        OTHER INFORMATION
+        <h4>OTHER INFORMATION</h4>
       </div>
       <div class="card-body">
         <div class="form-group">
