@@ -6,10 +6,13 @@
   </head>
 </html>
 
+<div>
+  <a href="/"><img src="../../assets/home.png" width="75" height="75"></a>
+</div>
 <div class="container-fluid">
   <div class="card">
     <div class="card-header">
-      PLEASE SELECT AN ITEM
+      <h4>PLEASE SELECT AN ITEM</h4>
     </div>
     <div class="card-body">
       <div *ngFor="let item of items; let i = index;">
@@ -29,7 +32,7 @@
 
   <div class="card">
       <div class="card-header">
-        ADD A NEW ITEM (if you don't see one above)
+        <h4>ADD A NEW ITEM</h4> (if you don't see one above)
       </div>
       <div class="card-body">
         <div class="form-group">
@@ -44,7 +47,7 @@
   <br/>
   <div class="card">
     <div class="card-header">
-      YOUR INFORMATION
+      <h4>YOUR INFORMATION</h4>
     </div>
     <div class="card-body">
       <form>
