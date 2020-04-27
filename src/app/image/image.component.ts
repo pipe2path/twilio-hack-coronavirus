@@ -20,17 +20,40 @@ export class ImageComponent implements OnInit {
   public items;
   public selectedItem: Item;
   public name;
+  public store;
+  public notes;
   public imageFile;
+  public hideImgElement;
+  public lat: any;
+  public long: any;
 
   constructor(private searchService: SearchService, private foundService: FoundService, private imageCompress: NgxImageCompressService) {
     this.name = '';
+    this.store = '';
+    this.notes = '';
     this.imageFile = null;
+    this.hideImgElement = false;
   }
 
   ngOnInit() {
     this.getRequestedItems();
     this.selectedItem = null;
     this.name = '';
+    this.store = '';
+    this.notes = '';
+    this.hideImgElement = true;
+    this.getLocation();
+  }
+
+  getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.lat = position.coords.latitude;
+        this.long = position.coords.longitude;
+      });
+    } else {
+      alert('Geolocation is not supported by this browser.');
+    }
   }
 
   getRequestedItems(): void {
@@ -48,15 +71,18 @@ export class ImageComponent implements OnInit {
   onSubmit(){
     const itemid = this.selectedItem.itemId;
     const submittedBy = this.name;
-    //const image = this.canvas.nativeElement.toDataURL('image/jpeg');
+    const store = this.store;
+    const notes = this.notes;
     const image = this.imageEl.nativeElement.src;
-    const response = {'itemId' : itemid, 'name': submittedBy, 'image': image};
+    const lat = this.lat;
+    const long = this.long;
+    const response = {'itemId' : itemid, 'name': submittedBy, 'store': store, 'notes': notes, 'image': image, 'lat': lat, 'long': long};
     this.foundService.saveImageForItem(response).subscribe();
     this.ngOnInit();
+
   }
 
   onFileSelected(event) {
-    console.log(event);
     const that = this;
     this.imageFile = event.target.files[0];
     const imageEl = this.imageEl.nativeElement;
@@ -65,6 +91,7 @@ export class ImageComponent implements OnInit {
       var img = new Image();
       img.onload = function() {
         imageEl.src = img.src;
+        that.hideImgElement = false;
         that.compressFile(imageEl.src);
       };
       img.src = reader.result;
