@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SearchService } from '../services/search.service';
 import { HttpHeaders } from '@angular/common/http';
 import { Item } from '../models/itemModel';
+import { Router } from '@angular/router';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -25,7 +26,7 @@ export class SearchComponent implements OnInit {
   public newName;
   public newBrand;
 
-  constructor(private searchService: SearchService) { }
+  constructor(private router: Router, private searchService: SearchService) { }
 
   ngOnInit() {
     this.items = [];
@@ -67,6 +68,6 @@ export class SearchComponent implements OnInit {
   onSubmit(){
     var response = {"items": this.itemsNeeded, "name": this.name, "phone": this.phone}
     this.searchService.saveItemsNeeded(response).subscribe();
-    this.ngOnInit();
+    this.router.navigate(['']);
   }
 }

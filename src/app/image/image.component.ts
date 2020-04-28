@@ -4,6 +4,7 @@ import { FoundService } from '../services/found.service';
 import { HttpHeaders } from '@angular/common/http';
 import { Item } from '../models/itemModel';
 import { NgxImageCompressService } from 'ngx-image-compress';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-image',
@@ -27,7 +28,8 @@ export class ImageComponent implements OnInit {
   public lat: any;
   public long: any;
 
-  constructor(private searchService: SearchService, private foundService: FoundService, private imageCompress: NgxImageCompressService) {
+  constructor(private searchService: SearchService, private foundService: FoundService,
+              , private imageCompress: NgxImageCompressService, private router: Router) {
     this.name = '';
     this.store = '';
     this.notes = '';
@@ -78,7 +80,8 @@ export class ImageComponent implements OnInit {
     const long = this.long;
     const response = {'itemId' : itemid, 'name': submittedBy, 'store': store, 'notes': notes, 'image': image, 'lat': lat, 'long': long};
     this.foundService.saveImageForItem(response).subscribe();
-    this.ngOnInit();
+    this.router.navigate(['']);
+    //this.ngOnInit();
 
   }
 
