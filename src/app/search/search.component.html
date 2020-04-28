@@ -5,14 +5,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
 </html>
-
-<div>
-  <a href="/"><img style="margin-left:10px" src="../../assets/home.png" width="35" height="35"></a>
-</div>
 <div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-1">
+      <a href="/"><img src="../../assets/home.png" width="35" height="35"></a>
+    </div>
+    <div class="col-sm-11">
+      <h3 style="color: green">GroceryAssist</h3>
+      <p>Request an item you need. You will receive a text if the item is found</p>
+    </div>
+  </div>
   <div class="card">
     <div class="card-header">
-      <h4>PLEASE SELECT AN ITEM</h4>
+      <h5>Select an item</h5>
     </div>
     <div class="card-body">
       <div *ngFor="let item of items; let i = index;">
@@ -29,10 +34,10 @@
       </div>
     </div>
   </div>
-
   <div class="card">
       <div class="card-header">
-        <h4>ADD A NEW ITEM</h4> (if you don't see one above)
+        <h5>Add a new item</h5>
+        <p>(if you don't see one above)</p>
       </div>
       <div class="card-body">
         <div class="form-group">
@@ -47,7 +52,8 @@
   <br/>
   <div class="card">
     <div class="card-header">
-      <h4>YOUR INFORMATION</h4>
+      <h5>Your information</h5>
+      <p>(so you can be notified)</p>
     </div>
     <div class="card-body">
       <form>
@@ -58,9 +64,15 @@
           <input class="form-control" id="phone" pattern="[0-9]*" inputmode="numeric" name="phone" placeholder="Phone Number" [(ngModel)]="phone" #phone1="ngModel">
         </div>
         <div class="form-group">
-          <input [disabled]="name=='' || phone=='' || itemsNeeded.length==0" type="button" class="btn btn-primary btn-lg btn-block" value="Submit" (click)="onSubmit()" />
+          <input [disabled]="name=='' || phone=='' || itemsNeeded.length==0" type="button" class="btn btn-primary btn-lg btn-block"
+                 value="Submit" (click)="onSubmit()" data-toggle="modal" href="#modal" />
         </div>
       </form>
     </div>
   </div>
+
+  <div #modalInfo class="modal fade" id="modal">
+    Thank you!
+  </div>
+
 </div>

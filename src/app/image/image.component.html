@@ -18,15 +18,20 @@
 </style>
 <body>
 
-<div>
-  <a href="/"><img style="margin-left:10px" src="../../assets/home.png" width="35" height="35"></a>
-</div>
 <div class="container-fluid">
-<!--  <h5>Please select an item</h5>-->
+  <div class="row">
+    <div class="col-sm-1">
+      <a href="/"><img src="../../assets/home.png" width="35" height="35"></a>
+    </div>
+    <div class="col-sm-11">
+      <h3 style="color: green">GroceryAssist</h3>
+      <p>Help others by taking a picture of any item here.</p>
+    </div>
+  </div>
   <form>
     <div class="card">
       <div class="card-header">
-        <h4>ITEMS REQUESTED. SELECT ONE</h4>
+        <h5>Items Requested</h5>
       </div>
       <div class="card-body">
         <div *ngFor="let item of items; let i = index;">
@@ -40,7 +45,7 @@
     <br/>
     <div class="card">
       <div class="card-header">
-        <h4>TAKE A PICTURE</h4>
+        <h5>Snap a picture</h5>
       </div>
       <div class="card-body">
         <div #media id="app">
@@ -54,7 +59,7 @@
     <br/>
     <div class="card">
       <div class="card-header">
-        <h4>OTHER INFORMATION</h4>
+        <h5>Other Information</h5>
       </div>
       <div class="card-body">
         <div class="form-group">
