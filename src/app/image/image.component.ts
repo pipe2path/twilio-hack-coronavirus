@@ -29,7 +29,7 @@ export class ImageComponent implements OnInit {
   public long: any;
 
   constructor(private searchService: SearchService, private foundService: FoundService,
-              , private imageCompress: NgxImageCompressService, private router: Router) {
+              private imageCompress: NgxImageCompressService, private router: Router) {
     this.name = '';
     this.store = '';
     this.notes = '';
