@@ -109,7 +109,7 @@ export class ImageComponent implements OnInit {
     var imgResultAfterCompress:string;
     var localCompressedURl:any;
     const orientation = -1;
-    this.imageCompress.compressFile(image, orientation, 25, 50).then(
+    this.imageCompress.compressFile(image, orientation, 10, 50).then(
       result => {
         imgResultAfterCompress = result;
         localCompressedURl = result;
