@@ -17,68 +17,60 @@
   }
 </style>
 <body>
+  <div class="d-flex flex-wrap screen-container">
+    <div class="header_info bg-white sticky-top w-100 py-2">
+      <div class="container-fluid">
+        <a href="/" class="btn border-0 btn-back btn-link p-0"><img src="../../assets/back.svg" alt="icon" /></a>
+        <span class="ml-3">Back</span>
+      </div>
+    </div>
 
-<div class="container-fluid">
-  <div class="row">
-    <div style="margin-right:10px" class="col-xs-1">
-      <a href="/"><img src="../../assets/home.png" width="30" height="30"></a>
-    </div>
-    <div class="col-xs-11">
-      <h4 style="color: green">GroceryAssist</h4>
-      <p>Take a pic. Help someone</p>
-    </div>
-  </div>
-  <form>
-    <div class="card">
-      <div class="card-header">
-        <h5>Items Requested</h5>
-      </div>
-      <div class="card-body">
-        <div *ngFor="let item of items; let i = index;">
-          <div class="list-group">
-            <button type="button" class="list-group-item list-group-item-action" [ngClass]="{'active': selectedItem == item}"
-              (click)="onClick(item, $event)">{{item.name}}</button>
-          </div>
+    <div class="product-list-area pt-3 w-100">
+      <div class="container-fluid">
+        <div class="product-list-info mb-2 d-flex justify-content-between">
+          <span>Please select an item you found</span>
         </div>
-      </div>
-    </div>
-    <br/>
-    <div class="card">
-      <div class="card-header">
-        <h5>Snap a picture</h5>
-      </div>
-      <div class="card-body">
+        <ul class="list-unstyled product-list mb-0">
+          <div *ngFor="let item of items; let i = index;">
+            <li class="product-list-item py-2 d-flex align-items-center">
+              <div class="pli-info flex-grow-1 px-2">
+                <button type="button" class="list-group-item list-group-item-action" [ngClass]="{'active': selectedItem == item}"
+                        (click)="onClick(item, $event)">{{item.name}}</button>
+              </div>
+            </li>
+          </div>
+        </ul>
+        <hr/>
         <div #media id="app">
           <div><img #img [hidden]="hideImgElement" id="img1" width="100%"></div>
-  <!--      <div><canvas #canvas id="canvas" class="vid" width="100%" height="100%"></canvas></div>-->
           <input id="file" type="file" accept="image/*" (change)="onFileSelected($event)">
         </div>
+        <hr/>
       </div>
     </div>
     <br/>
-    <br/>
-    <div class="card">
-      <div class="card-header">
-        <h5>Other Information</h5>
+    <div class="information-area position-sticky mt-auto w-100 py-3">
+      <div class="container-fluid">
+        <div class="information-heading mb-2">
+          <h4>Your information</h4>
+        </div>
+
+        <form action="/">
+          <div class="form-group">
+            <input class="form-control" id="store" name="store" placeholder="Store" [(ngModel)]="store" #name1="ngModel">
+          </div>
+          <div class="form-group">
+            <input class="form-control" id="name" name="name" placeholder="Your Name (optional)" [(ngModel)]="name" #name1="ngModel">
+          </div>
+          <div class="form-group">
+            <textarea class="form-control" id="notes" name="notes" rows="3" placeholder="Additional info (optional)" [(ngModel)]="notes"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block" (click)="onSubmit()">submit</button>
+        </form>
       </div>
-      <div class="card-body">
-        <div class="form-group">
-          <input class="form-control" id="store" name="store" placeholder="Store" [(ngModel)]="store" #name1="ngModel">
-        </div>
-        <div class="form-group">
-          <input class="form-control" id="name" name="name" placeholder="Your Name (optional)" [(ngModel)]="name" #name1="ngModel">
-        </div>
-        <div class="form-group">
-          <textarea class="form-control" id="notes" name="notes" rows="3" placeholder="Additional info (optional)" [(ngModel)]="notes"></textarea>
-        </div>
-      </div>
+      <!-- /.container-fluid -->
     </div>
-  </form>
-</div>
-<br/>
-<div class="form-group">
-  <input type="button" class="btn btn-primary btn-lg btn-block" value="Submit" (click)="onSubmit()" />
-</div>
+  </div>
 </body>
 <script src="../common/imageProcessor.js"></script>
 </html>

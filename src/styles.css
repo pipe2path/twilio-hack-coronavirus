@@ -1,1 +1,86 @@
 @import '~bootstrap/dist/css/bootstrap.css';
+
+.btn-back img{
+  width: 19px;
+  display: block;
+}
+
+.screen-container{
+  height: 100vh;
+}
+.product-list-info{
+  font-size: 13px;
+}
+.pli-controls img{
+  width: 15px;
+}
+.pli-info h3{
+  margin: 0 0 3px;
+  color: #192a3e;
+  font-size: 16px;
+  font-weight: 800;
+}
+.pli-info h3 a{
+  color: inherit;
+}
+.pli-info p{
+  margin: 0;
+  font-size: 13px;
+}
+
+.pli-info button{
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.pli-image img{
+  max-width: 100%;
+}
+.pli-image{
+  max-width: 68px;
+  text-align: center;
+  -webkit-flex: 0 0 68px;
+  -moz-flex: 0 0 68px;
+  -ms-flex: 0 0 68px;
+  -o-flex: 0 0 68px;
+  flex: 0 0 68px;
+}
+/*.product-list{
+	overflow: auto;
+	max-height: 428px;
+}*/
+/*.product-list-item{*/
+/*  border-bottom: 1px solid #f3f3f3;*/
+/*}*/
+.information-heading h4{
+  margin-top: 0;
+  font-size: 16px;
+  font-weight: 800;
+  margin-bottom: 2px;
+}
+.information-heading p{
+  color: #7f8893;
+  font-size: 12px;
+}
+.information-area{
+  bottom: 0;
+  background: #fff;
+  -webkit-box-shadow: -5px 0 16px 0px rgba(0, 0, 0, 0.13);
+  box-shadow: -5px 0 16px 0px rgba(0, 0, 0, 0.13);
+}
+.information-area .form-group{
+  margin-bottom: 10px;
+}
+.information-area .form-control, .information-area .btn{
+  height: 48px;
+  border: none;
+}
+.information-area .form-control{
+  background: #f5f5f5;
+  color: #a3a8b0;
+  font-size: 14px;
+}
+.information-area .btn{
+  text-transform: uppercase;
+  font-weight: 700;
+}

@@ -12,34 +12,36 @@
     </div>
     <div class="col-xs-11">
       <h4 style="color: green">GroceryAssist</h4>
-      <p>Request an item you need</p>
+      <br>
+      <h5 style="margin-left:-26px">Request an item you need</h5>
     </div>
   </div>
-  <div class="card">
-    <div class="card-header">
-      <h5>Select an item</h5>
-    </div>
-    <div class="card-body">
+  <div class="information-area mt-auto w-100 py-3">
+<!--    <div class="card-header">-->
+<!--      <h5>Select an item</h5>-->
+<!--    </div>-->
+<!--    <div class="card-body">-->
       <div *ngFor="let item of items; let i = index;">
         <ul class="list-group list-group-flush">
           <li class="list-group-item" (change)="onChange(item, $event)">
             <div class="custom-control custom-checkbox">
               <input type="checkbox" class="custom-control-input" id="check{{i}}"  />
-              <label class="custom-control-label" for="check{{i}}">{{item.name}}</label>
+              <label class="custom-control-label" style="font-weight: 800" for="check{{i}}">{{item.name}}</label>
               <label class="invisible">{{item.itemId}}</label>
             </div>
             <hr/>
           </li>
         </ul>
       </div>
-    </div>
+<!--    </div>-->
   </div>
-  <div class="card">
-      <div class="card-header">
+  <div class="information-area mt-auto w-100 py-3">
+    <div class="container-fluid">
+      <div class="information-heading mb-2">
         <h5>Add a new item</h5>
         <p>(if you don't see one above)</p>
       </div>
-      <div class="card-body">
+
         <div class="form-group">
           <input class="form-control" id="newName" name="newName" placeholder="Item Name" [(ngModel)]="newName">
         </div>
@@ -47,15 +49,16 @@
           <input class="form-control" id="newBrand" name="newBrand" placeholder="Item Brand" [(ngModel)]="newBrand">
         </div>
         <a (click)="addNewItem()"><i class="fa fa-plus-square" style="font-size:24px;color:green"></i></a>
-      </div>
+    </div>
   </div>
   <br/>
-  <div class="card">
-    <div class="card-header">
-      <h5>Your information</h5>
-      <p>(so you can be notified)</p>
-    </div>
-    <div class="card-body">
+  <div class="information-area mt-auto w-100 py-3">
+    <div class="container-fluid">
+      <div class="information-heading mb-2">
+        <h5>Your information</h5>
+        <p>(so you can be notified)</p>
+      </div>
+
       <form>
         <div class="form-group">
           <input class="form-control" id="name" name="name" placeholder="Name" [(ngModel)]="name" #name1="ngModel">

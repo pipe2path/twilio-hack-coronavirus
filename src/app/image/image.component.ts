@@ -20,6 +20,7 @@ export class ImageComponent implements OnInit {
 
   public items;
   public selectedItem: Item;
+  public selectedItems = [];
   public name;
   public store;
   public notes;
@@ -68,6 +69,7 @@ export class ImageComponent implements OnInit {
 
   onClick(item: Item, newValue) {
     this.selectedItem = item;
+    this.selectedItems.push(this.selectedItem);
   }
 
   onSubmit(){
@@ -81,8 +83,6 @@ export class ImageComponent implements OnInit {
     const response = {'itemId' : itemid, 'name': submittedBy, 'store': store, 'notes': notes, 'image': image, 'lat': lat, 'long': long};
     this.foundService.saveImageForItem(response).subscribe();
     this.router.navigate(['']);
-    //this.ngOnInit();
-
   }
 
   onFileSelected(event) {
