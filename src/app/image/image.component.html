@@ -27,15 +27,12 @@
 
     <div class="product-list-area pt-3 w-100">
       <div class="container-fluid">
-        <div class="product-list-info mb-2 d-flex justify-content-between">
-          <span>Please select an item you found</span>
-        </div>
         <ul class="list-unstyled product-list mb-0">
           <div *ngFor="let item of items; let i = index;">
             <li class="product-list-item py-2 d-flex align-items-center">
               <div class="pli-info flex-grow-1 px-2">
                 <button type="button" class="list-group-item list-group-item-action" [ngClass]="{'active': selectedItem == item}"
-                        (click)="onClick(item, $event)">{{item.name}}</button>
+                        (click)="onClick(item, $event)">{{item.name}} <span class="badge badge-secondary" alt="open item">{{item.openItems > 0 ? item.openItems : ''}}</span> </button>
               </div>
             </li>
           </div>
